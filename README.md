@@ -1,17 +1,20 @@
 # HB Lib Packages
 
-Software packaged for nix by the [University Library][hb-library] at [University
-of Borås][hb].
+Software packaged for [nix][] by the [University Library][hb-library] at
+[University of Borås][hb].
 
+[nix]: https://nixos.org
 [hb-library]: https://www.hb.se/en/university-library/
 [hb]: https://www.hb.se/en/
 
-The packages are generally to niche to be part of nixpkgs, and are mainly useful
-in a library (institution) context.
+The packages are generally to niche to be part of [nixpkgs][], and are mainly
+useful in a library (institution) context.
+
+[nixpkgs]: https://github.com/NixOS/nixpkgs
 
 This repository contains no packages in itself but just nix expressions to
 download, build and install packages from where they are originally published.
-Any license for this repository does not apply to the artifacts build with it.
+Any license for this repository does not apply to the artifacts built with it.
 
 ## Usage
 
