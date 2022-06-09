@@ -71,8 +71,6 @@ working with the [Handle System][handle], developed and published by [CNRI][].
 [handle]: https://www.rfc-editor.org/rfc/rfc3650.txt
 [CNRI]: http://www.cnri.reston.va.us
 
-This repo is just some nix expression to help installing it.
-
 ### yaz
 
 [YAZ][] is a programmers’ toolkit supporting the development of Z39.50/SRW/SRU
