@@ -1,5 +1,5 @@
 {
-  description = "Handle Client Library and Handle.Net Software packaged for nix";
+  description = "Software for libraries packaged for Nix by University of Borås";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-22.05-darwin";
