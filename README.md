@@ -1,11 +1,11 @@
 # UB Library Packages
 
-Software packaged for [nix][] by the [University Library][hb-library] at
-[University of Borås][hb].
+Software packaged for [nix][] by the [University Library][ub-library] at
+[University of Borås][ub].
 
 [nix]: https://nixos.org
-[hb-library]: https://www.hb.se/en/university-library/
-[hb]: https://www.hb.se/en/
+[ub-library]: https://www.hb.se/en/university-library/
+[ub]: https://www.hb.se/en/
 
 The packages are generally to niche to be part of [nixpkgs][], and are mainly
 useful in a library (institution) context.
