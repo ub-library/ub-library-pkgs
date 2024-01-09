@@ -1,4 +1,4 @@
-# HB Lib Packages
+# UB Library Packages
 
 Software packaged for [nix][] by the [University Library][hb-library] at
 [University of Borås][hb].
@@ -26,8 +26,8 @@ features][flakes] `nix-command` and `flakes`.
 
 ### Example entering a one time shell with yaz available
 
-```sh
-nix shell gitlab:hb-lib-public/hblib-pkgs#yaz
+``` sh
+nix shell github:ub-library/ub-library-pkgs#yaz
 yaz-marcdump some-marcfile.mrc
 ```
 
@@ -40,14 +40,14 @@ Put this in your `flake.nix`:
   description = "A basic flake for a shell with handle-client available";
 
   inputs.flake-utils.url = "github:numtide/flake-utils";
-  inputs.hblib-pkgs.url = "gitlab:hb-lib-public/hblib-pkgs"
+  inputs.ub-library-pkgs.url = "github:ub-library/ub-library-pkgs"
 
-  outputs = { self, flake-utils, hblib-pkgs }:
+  outputs = { self, flake-utils, ub-library-pkgs }:
     flake-utils.lib.eachDefaultSystem (system: let
-      hblib = hblib-pkgs.packages.${system};
+      ublib = ub-library-pkgs.packages.${system};
     in {
       devShell = pkgs.mkShell {
-        buildInputs = [ hblib.handle-client ];
+        buildInputs = [ ublib.handle-client ];
       };
     });
 }
