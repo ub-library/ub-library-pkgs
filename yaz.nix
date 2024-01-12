@@ -1,4 +1,4 @@
-{stdenv, lib, fetchurl, libiconv, icu, libxslt, libxml2, pkgconfig}:
+{stdenv, lib, fetchurl, libiconv, icu, libxslt, libxml2, pkg-config}:
 
 stdenv.mkDerivation rec {
   name = "yaz-5.31.0";
@@ -8,7 +8,7 @@ stdenv.mkDerivation rec {
     sha256 = "058dzskanmhmrgfl0c5fyy4bv4b3p4p4wg9bg0rc32jps5v48kc6";
   };
 
-  buildInputs = [ icu libiconv libxml2 libxslt pkgconfig ];
+  buildInputs = [ icu libiconv libxml2 libxslt pkg-config ];
 
   meta = {
     description = "A C/C++ library for using the Z39.50/SRU/Solr protocols.";
