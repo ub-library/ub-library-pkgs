@@ -16,7 +16,7 @@
         # with the same name.
         #
         #     mkCallPackage "yaz"
-        #     # calls `pkgs.callPackage ./yaz.nix {}`
+        #     # calls `pkgs.callPackage ./pkgs/yaz.nix {}`
         mkCallPackage = (name:
           pkgs.callPackage (./. + ("/pkgs/" + name + ".nix")) {}
         );
