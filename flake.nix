@@ -22,6 +22,7 @@
         # The list of packages to provide. Each package should have a
         # corresponding "*.nix" file in this repo.
         packageNames = [
+          "combined-log-to-json"
           "handle-client"
           "handle-server"
           "yaz"

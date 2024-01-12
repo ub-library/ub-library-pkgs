@@ -81,3 +81,10 @@ is very convenient to work with on the command line.
 
 [YAZ]: https://www.indexdata.com/resources/software/yaz/
 [indexdata]: https://www.indexdata.com
+
+### Tools from ub-library
+
+* [combined-log-to-json][] - A simple script to convert the combined log format
+    to json
+
+[combined-log-to-json]: https://github.com/ub-library/combined-log-to-json
