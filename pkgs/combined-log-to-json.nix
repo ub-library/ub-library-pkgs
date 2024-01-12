@@ -5,7 +5,7 @@ buildGoModule rec {
   src = fetchFromGitHub {
     owner = "ub-library";
     repo = pname;
-    rev = "8dc7b7b10764913b17175a87db9643f58692421e";
+    rev = "v${version}";
     hash = "sha256-T294Ls6/NYHwepGcfXK5KMLgWbwBQQ4WGTZvxc5t4T4=";
   };
   vendorHash = null;
