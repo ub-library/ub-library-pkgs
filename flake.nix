@@ -17,7 +17,9 @@
         #
         #     mkCallPackage "yaz"
         #     # calls `pkgs.callPackage ./yaz.nix {}`
-        mkCallPackage = (name: pkgs.callPackage (./. + ("/" + name + ".nix")) {});
+        mkCallPackage = (name:
+          pkgs.callPackage (./. + ("/pkgs/" + name + ".nix")) {}
+        );
 
         # The list of packages to provide. Each package should have a
         # corresponding "*.nix" file in this repo.
