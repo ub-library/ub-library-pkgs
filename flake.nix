@@ -27,6 +27,7 @@
           "combined-log-to-json"
           "handle-client"
           "handle-server"
+          "sip2-ruby"
           "yaz"
         ];
 

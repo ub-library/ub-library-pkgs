@@ -86,5 +86,8 @@ is very convenient to work with on the command line.
 
 * [combined-log-to-json][] - A simple script to convert the combined log format
     to json
+* [sip2-ruby][] - Scripts for converting Sip2 messages to JSON and back
 
 [combined-log-to-json]: https://github.com/ub-library/combined-log-to-json
+[sip2-ruby]: https://github.com/ub-library/sip2-ruby
+
