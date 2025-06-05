@@ -1,22 +1,24 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    bigdecimal (3.1.6)
-    concurrent-ruby (1.2.3)
-    dry-core (1.0.1)
+    bigdecimal (3.2.2)
+    concurrent-ruby (1.3.5)
+    dry-core (1.1.0)
       concurrent-ruby (~> 1.0)
+      logger
       zeitwerk (~> 2.6)
-    dry-inflector (1.0.0)
-    dry-logic (1.5.0)
+    dry-inflector (1.2.0)
+    dry-logic (1.6.0)
+      bigdecimal
       concurrent-ruby (~> 1.0)
-      dry-core (~> 1.0, < 2)
+      dry-core (~> 1.1)
       zeitwerk (~> 2.6)
-    dry-struct (1.6.0)
-      dry-core (~> 1.0, < 2)
-      dry-types (>= 1.7, < 2)
+    dry-struct (1.8.0)
+      dry-core (~> 1.1)
+      dry-types (~> 1.8, >= 1.8.2)
       ice_nine (~> 0.11)
       zeitwerk (~> 2.6)
-    dry-types (1.7.2)
+    dry-types (1.8.2)
       bigdecimal (~> 3.0)
       concurrent-ruby (~> 1.0)
       dry-core (~> 1.0)
@@ -24,13 +26,14 @@ GEM
       dry-logic (~> 1.4)
       zeitwerk (~> 2.6)
     ice_nine (0.11.2)
+    logger (1.7.0)
     parslet (2.0.0)
-    sip2-ruby (0.1.1)
-      dry-struct (~> 1.4)
+    sip2-ruby (0.1.2)
+      dry-struct (>= 1.4, < 1.9)
       parslet (~> 2.0)
       yajl-ruby (~> 1.4)
     yajl-ruby (1.4.3)
-    zeitwerk (2.6.12)
+    zeitwerk (2.7.3)
 
 PLATFORMS
   aarch64-linux
@@ -46,7 +49,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  sip2-ruby
+  sip2-ruby (~> 0.1.2)
 
 BUNDLED WITH
-   2.6.9
+   2.6.7

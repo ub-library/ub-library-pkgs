@@ -9,7 +9,29 @@
   outputs = { self, nixpkgs, flake-utils }:
     flake-utils.lib.eachDefaultSystem (system:
       let
-        pkgs = nixpkgs.legacyPackages.${system};
+        fixBundlerWarningOverlay = final: prev: {
+
+          bundler = prev.bundler.overrideAttrs ({ postFixup ? "", ... }: {
+            postFixup = postFixup + ''
+              stubSpec=$(find $out -path '*bundler/stub_specification.rb')
+              substituteInPlace $stubSpec \
+                --replace-fail 'warn "Source #{source} is ignoring #{self} because it is missing extensions"' '# redacted because of https://github.com/NixOS/nixpkgs/issues/40024'
+            '';
+          });
+
+          ruby_3_4 = prev.ruby_3_4.override {
+            bundler = final.bundler;
+          };
+
+          bundlerApp = prev.bundlerApp.override {
+            ruby = final.ruby_3_4;
+          };
+        };
+
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [ fixBundlerWarningOverlay ];
+        };
         inherit (nixpkgs.lib.attrsets) genAttrs;
 
         # Takes a package name and generates a callPackage call to a nix-file
@@ -39,6 +61,16 @@
         # mkCallPackage to each of our named packages.
         packages = genAttrs packageNames mkCallPackage;
       in
-      { inherit packages; }
+      {
+        inherit packages;
+
+        devShells.default = pkgs.mkShell {
+          packages = [
+            pkgs.ruby_3_4
+            pkgs.bundix
+          ];
+        };
+
+      }
     );
 }
