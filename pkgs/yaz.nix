@@ -1,4 +1,13 @@
-{stdenv, lib, fetchurl, libiconv, icu, libxslt, libxml2, pkg-config}:
+{
+  stdenv,
+  lib,
+  fetchurl,
+  libiconv,
+  icu,
+  libxslt,
+  libxml2,
+  pkg-config,
+}:
 
 stdenv.mkDerivation rec {
   pname = "yaz";
@@ -9,7 +18,13 @@ stdenv.mkDerivation rec {
     hash = "sha256-2wMNbWaIA5ikQhXiYTJjDulPXkYtg4gJ5D+X5jmcE1M=";
   };
 
-  buildInputs = [ icu libiconv libxml2 libxslt pkg-config ];
+  buildInputs = [
+    icu
+    libiconv
+    libxml2
+    libxslt
+    pkg-config
+  ];
 
   meta = {
     description = "A C/C++ library for using the Z39.50/SRU/Solr protocols.";
@@ -17,8 +32,8 @@ stdenv.mkDerivation rec {
       YAZ is a C/C++ library for applications using the Z39.50/SRU/Solr
       protocols for information retrieval.
     '';
-    homepage = https://www.indexdata.com/resources/software/yaz/;
-    license =  lib.licenses.bsd3;
+    homepage = "https://www.indexdata.com/resources/software/yaz/";
+    license = lib.licenses.bsd3;
     platforms = lib.platforms.all;
   };
 }

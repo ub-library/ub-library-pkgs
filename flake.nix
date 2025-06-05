@@ -6,18 +6,32 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachDefaultSystem (system:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      flake-utils,
+    }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
       let
         fixBundlerWarningOverlay = final: prev: {
 
-          bundler = prev.bundler.overrideAttrs ({ postFixup ? "", ... }: {
-            postFixup = postFixup + ''
-              stubSpec=$(find $out -path '*bundler/stub_specification.rb')
-              substituteInPlace $stubSpec \
-                --replace-fail 'warn "Source #{source} is ignoring #{self} because it is missing extensions"' '# redacted because of https://github.com/NixOS/nixpkgs/issues/40024'
-            '';
-          });
+          bundler = prev.bundler.overrideAttrs (
+            {
+              postFixup ? "",
+              ...
+            }:
+            {
+              postFixup =
+                postFixup
+                + ''
+                  stubSpec=$(find $out -path '*bundler/stub_specification.rb')
+                  substituteInPlace $stubSpec \
+                    --replace-fail 'warn "Source #{source} is ignoring #{self} because it is missing extensions"' '# redacted because of https://github.com/NixOS/nixpkgs/issues/40024'
+                '';
+            }
+          );
 
           ruby_3_4 = prev.ruby_3_4.override {
             bundler = final.bundler;
@@ -39,9 +53,7 @@
         #
         #     mkCallPackage "yaz"
         #     # calls `pkgs.callPackage ./pkgs/yaz.nix {}`
-        mkCallPackage = (name:
-          pkgs.callPackage (./. + ("/pkgs/" + name + ".nix")) {}
-        );
+        mkCallPackage = (name: pkgs.callPackage (./. + ("/pkgs/" + name + ".nix")) { });
 
         # The list of packages to provide. Each package should have a
         # corresponding "*.nix" file in this repo.
@@ -71,6 +83,7 @@
           ];
         };
 
+        formatter = pkgs.nixfmt-rfc-style;
       }
     );
 }

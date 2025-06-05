@@ -1,16 +1,21 @@
-{lib, stdenv, fetchurl, jre, coreutils}:
+{
+  lib,
+  stdenv,
+  fetchurl,
+  jre,
+  coreutils,
+}:
 
 stdenv.mkDerivation rec {
   pname = "handle-server";
   version = "9.3.1";
 
   src = fetchurl {
-    url =
-      "http://www.handle.net/hnr-source/handle-${version}-distribution.tar.gz";
+    url = "http://www.handle.net/hnr-source/handle-${version}-distribution.tar.gz";
     hash = "sha256-A8ZZURrLDxGonX+Jk/R7FWw7k7KI72SjFw4JoyxSZBc=";
   };
 
-  buildInputs = [];
+  buildInputs = [ ];
 
   prePatch = ''
     substituteInPlace bin/hdl \
@@ -21,7 +26,7 @@ stdenv.mkDerivation rec {
         "/usr/bin/" "${coreutils}/bin/"
     substituteInPlace bin/hdl --replace \
         "exec java" "exec ${jre}/bin/java"
-    '';
+  '';
 
   installPhase = ''
     runHook preInstall
@@ -32,7 +37,7 @@ stdenv.mkDerivation rec {
     cp -pr *.txt doc lib "$out/share/$pname/"
 
     runHook postInstall
-    '';
+  '';
 
   meta = {
     description = "Handle.Net software, including handle-server.";
@@ -48,10 +53,10 @@ stdenv.mkDerivation rec {
       without changing the identifier, thus allowing the name of the item to
       persist over changes of location and other state information.
     '';
-    homepage = https://www.handle.net/index.html;
-    license =  {
+    homepage = "https://www.handle.net/index.html";
+    license = {
       fullName = "Handle.Net Public License Agreement (ver.2)";
-      url = http://hdl.handle.net/20.1000/112;
+      url = "http://hdl.handle.net/20.1000/112";
     };
     platforms = lib.platforms.all;
   };

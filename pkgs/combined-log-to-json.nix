@@ -1,4 +1,8 @@
-{buildGoModule, fetchFromGitHub, lib}:
+{
+  buildGoModule,
+  fetchFromGitHub,
+  lib,
+}:
 buildGoModule rec {
   pname = "combined-log-to-json";
   version = "0.1.0";
@@ -23,8 +27,8 @@ buildGoModule rec {
       The combined log format is commonly used by e.g. Apache HTTP Server and
       EZproxy.
     '';
-    homepage = https://github.com/ub-library/combined-log-to-json;
-    license =  lib.licenses.mit;
+    homepage = "https://github.com/ub-library/combined-log-to-json";
+    license = lib.licenses.mit;
     platforms = lib.platforms.all;
   };
 }

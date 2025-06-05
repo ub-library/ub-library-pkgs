@@ -1,4 +1,10 @@
-{lib, stdenv, fetchurl, jre, coreutils}:
+{
+  lib,
+  stdenv,
+  fetchurl,
+  jre,
+  coreutils,
+}:
 
 stdenv.mkDerivation rec {
   pname = "handle-client";
@@ -9,7 +15,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-fdMXjIMJ7m9nYPTOslPPrRQ1pIq4fAUJ8ztl7hk17ns=";
   };
 
-  buildInputs = [];
+  buildInputs = [ ];
 
   prePatch = ''
     substituteInPlace bin/hdl \
@@ -20,7 +26,7 @@ stdenv.mkDerivation rec {
         "/usr/bin/" "${coreutils}/bin/"
     substituteInPlace bin/hdl --replace \
         "exec java" "exec ${jre}/bin/java"
-    ''; 
+  '';
 
   installPhase = ''
     runHook preInstall
@@ -31,7 +37,7 @@ stdenv.mkDerivation rec {
     cp -pr *.txt doc lib "$out/share/$pname/"
 
     runHook postInstall
-    '';
+  '';
 
   meta = {
     description = "Java libraries and scripts for using the handle protocol.";
@@ -40,10 +46,10 @@ stdenv.mkDerivation rec {
       understands the handle protocol and would form the foundation for
       Java-based custom client software development.
     '';
-    homepage = https://www.handle.net/index.html;
-    license =  {
+    homepage = "https://www.handle.net/index.html";
+    license = {
       fullName = "CNRI License Agreement for Client Library (ver. 9.3.0) — Java™ Version";
-      url = http://hdl.handle.net/20.1000/114;
+      url = "http://hdl.handle.net/20.1000/114";
     };
     platforms = lib.platforms.all;
   };
