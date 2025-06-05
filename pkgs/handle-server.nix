@@ -2,12 +2,12 @@
 
 stdenv.mkDerivation rec {
   pname = "handle-server";
-  version = "9.3.0";
+  version = "9.3.1";
 
   src = fetchurl {
     url =
       "http://www.handle.net/hnr-source/handle-${version}-distribution.tar.gz";
-    sha256 = "sha256-e78VWEKwmN+es+biR3i+I7x0Nlzw8rGyrLCuERpUva8=";
+    hash = "sha256-A8ZZURrLDxGonX+Jk/R7FWw7k7KI72SjFw4JoyxSZBc=";
   };
 
   buildInputs = [];

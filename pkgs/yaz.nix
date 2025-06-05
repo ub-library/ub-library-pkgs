@@ -1,11 +1,12 @@
 {stdenv, lib, fetchurl, libiconv, icu, libxslt, libxml2, pkg-config}:
 
 stdenv.mkDerivation rec {
-  name = "yaz-5.31.0";
+  pname = "yaz";
+  version = "5.35.1";
 
   src = fetchurl {
-    url = "http://ftp.indexdata.com/pub/yaz/${name}.tar.gz";
-    sha256 = "058dzskanmhmrgfl0c5fyy4bv4b3p4p4wg9bg0rc32jps5v48kc6";
+    url = "http://ftp.indexdata.com/pub/yaz/${pname}-${version}.tar.gz";
+    hash = "sha256-2wMNbWaIA5ikQhXiYTJjDulPXkYtg4gJ5D+X5jmcE1M=";
   };
 
   buildInputs = [ icu libiconv libxml2 libxslt pkg-config ];
