@@ -46,35 +46,28 @@
           inherit system;
           overlays = [ fixBundlerWarningOverlay ];
         };
-        inherit (nixpkgs.lib.attrsets) genAttrs;
 
-        # Takes a package name and generates a callPackage call to a nix-file
-        # with the same name.
-        #
-        #     mkCallPackage "yaz"
-        #     # calls `pkgs.callPackage ./pkgs/yaz.nix {}`
-        mkCallPackage = (name: pkgs.callPackage (./. + ("/pkgs/" + name + ".nix")) { });
+        combined-log-to-json = pkgs.callPackage ./pkgs/combined-log-to-json { };
 
-        # The list of packages to provide. Each package should have a
-        # corresponding "*.nix" file in this repo.
-        packageNames = [
-          "combined-log-to-json"
-          "handle-client"
-          "handle-server"
-          "sip2-ruby"
-          "yaz"
-        ];
+        handle-client = pkgs.callPackage ./pkgs/handle-client { };
 
-        # `genAttrs` takes a list of strings and a function and returns an
-        # attribute set where the keys are the strings from the list and the
-        # values are the result of the function applied to the key.
-        #
-        # Here we use it to generate a package attribute set by applying
-        # mkCallPackage to each of our named packages.
-        packages = genAttrs packageNames mkCallPackage;
+        handle-server = pkgs.callPackage ./pkgs/handle-server { };
+
+        sip2-ruby = pkgs.callPackage ./pkgs/sip2-ruby { };
+
+        yaz = pkgs.callPackage ./pkgs/yaz { };
+
       in
       {
-        inherit packages;
+        packages = {
+          inherit
+            combined-log-to-json
+            handle-client
+            handle-server
+            sip2-ruby
+            yaz
+            ;
+        };
 
         devShells.default = pkgs.mkShell {
           packages = [

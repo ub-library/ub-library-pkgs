@@ -1,7 +1,7 @@
 { bundlerApp, lib }:
 bundlerApp {
   pname = "sip2-ruby";
-  gemdir = ./sip2-ruby;
+  gemdir = ./.;
   exes = [
     "sip2-to-json"
     "json-to-sip2"
