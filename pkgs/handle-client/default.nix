@@ -8,11 +8,11 @@
 
 stdenv.mkDerivation rec {
   pname = "handle-client";
-  version = "9.3.1";
+  version = "9.3.2";
 
   src = fetchurl {
     url = "https://www.handle.net/hnr-source/${pname}-${version}-distribution.tar.gz";
-    hash = "sha256-fdMXjIMJ7m9nYPTOslPPrRQ1pIq4fAUJ8ztl7hk17ns=";
+    hash = "sha256-H7QU2XvJ4e68Wznc7A0aA8Nz6EUAt0D01+LTTxcNXNI=";
   };
 
   buildInputs = [ ];
@@ -48,7 +48,7 @@ stdenv.mkDerivation rec {
     '';
     homepage = "https://www.handle.net/index.html";
     license = {
-      fullName = "CNRI License Agreement for Client Library (ver. 9.3.0) — Java™ Version";
+      fullName = "CNRI License Agreement for Client Library (ver. 9) — Java™ Version";
       url = "http://hdl.handle.net/20.1000/114";
     };
     platforms = lib.platforms.all;

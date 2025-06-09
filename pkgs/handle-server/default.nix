@@ -8,11 +8,11 @@
 
 stdenv.mkDerivation rec {
   pname = "handle-server";
-  version = "9.3.1";
+  version = "9.3.2";
 
   src = fetchurl {
     url = "http://www.handle.net/hnr-source/handle-${version}-distribution.tar.gz";
-    hash = "sha256-A8ZZURrLDxGonX+Jk/R7FWw7k7KI72SjFw4JoyxSZBc=";
+    hash = "sha256-s9A+9EdA40wK3+9DVvEwi7eIaqumsi5+AZE42YUOsp4=";
   };
 
   buildInputs = [ ];
@@ -55,8 +55,8 @@ stdenv.mkDerivation rec {
     '';
     homepage = "https://www.handle.net/index.html";
     license = {
-      fullName = "Handle.Net Public License Agreement (ver.2)";
-      url = "http://hdl.handle.net/20.1000/112";
+      fullName = "Handle.Net Public License Agreement (ver.3)";
+      url = "https://hdl.handle.net/20.1000/136";
     };
     platforms = lib.platforms.all;
   };
