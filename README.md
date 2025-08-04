@@ -16,6 +16,10 @@ This repository contains no packages in itself but just nix expressions to
 download, build and install packages from where they are originally published.
 Any license for this repository does not apply to the artifacts built with it.
 
+No responsibility is taken for the artifacts built or downloaded with this
+repository. Packages are updated on a best effort basis, but no guarantees are
+made.
+
 ## Usage
 
 Each package is defined in a separate nix-file, and combined to a package set
@@ -90,4 +94,3 @@ is very convenient to work with on the command line.
 
 [combined-log-to-json]: https://github.com/ub-library/combined-log-to-json
 [sip2-ruby]: https://github.com/ub-library/sip2-ruby
-
