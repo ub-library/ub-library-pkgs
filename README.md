@@ -45,6 +45,7 @@ Put this in your `flake.nix`:
 
   inputs.flake-utils.url = "github:numtide/flake-utils";
   inputs.ub-library-pkgs.url = "github:ub-library/ub-library-pkgs"
+  inputs.ub-library-pkgs.inputs.flake-utils.follows = "flake-utils";
 
   outputs = { self, flake-utils, ub-library-pkgs }:
     flake-utils.lib.eachDefaultSystem (system: let
