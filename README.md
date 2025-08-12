@@ -61,7 +61,7 @@ Put this in your `flake.nix`:
 And enter the shell:
 ```sh
 nix shell
-hdl-qresolve 0.NA/0.NA
+hdl-qresolver 0.NA/0.NA
 ```
 
 ## Packages
