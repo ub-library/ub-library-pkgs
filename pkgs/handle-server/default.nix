@@ -2,16 +2,18 @@
   lib,
   stdenv,
   fetchurl,
-  jre,
+  busybox,
   coreutils,
+  jdk_headless,
+  javaRuntime ? jdk_headless,
+  posixTools ? (if stdenv.isDarwin then coreutils else busybox),
 }:
-
 stdenv.mkDerivation rec {
   pname = "handle-server";
   version = "9.3.2";
 
   src = fetchurl {
-    url = "http://www.handle.net/hnr-source/handle-${version}-distribution.tar.gz";
+    url = "https://www.handle.net/hnr-source/handle-${version}-distribution.tar.gz";
     hash = "sha256-s9A+9EdA40wK3+9DVvEwi7eIaqumsi5+AZE42YUOsp4=";
   };
 
@@ -21,11 +23,11 @@ stdenv.mkDerivation rec {
     substituteInPlace bin/hdl \
         --replace '{HDLHOME}lib' '{HDLHOME}share/${pname}/lib'
     substituteInPlace bin/hdl --replace \
-        "/bin/ls" "${coreutils}/bin/ls"
+        "/bin/ls" "${posixTools}/bin/ls"
     substituteInPlace bin/hdl --replace \
-        "/usr/bin/" "${coreutils}/bin/"
+        "/usr/bin/" "${posixTools}/bin/"
     substituteInPlace bin/hdl --replace \
-        "exec java" "exec ${jre}/bin/java"
+        "exec java" "exec ${javaRuntime}/bin/java"
   '';
 
   installPhase = ''
