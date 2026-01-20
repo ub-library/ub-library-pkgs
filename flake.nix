@@ -2,7 +2,7 @@
   description = "Software for libraries packaged for Nix by University of Borås";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.05-darwin";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.11-darwin";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
